@@ -1,19 +1,38 @@
-import model.*;
+import models.Book;
+import models.BookCard;
+import models.BookInsert;
 
 public class Main {
     public static void main(String[] args) {
-        Library library = new Library("Центральная городская публичная библиотека им. А. П. Чехова", "Греческая ул., 105");
-        library.fillData();
+        Library library = new Library();
 
-        Librarian librarian = new Librarian("Иван", "01.02.2000", 4);
+        Observer observer1 = new People("Ivan", null, "123-GH");
+        Observer observer2 = new People("Nikolay", null, "124-GH");
 
-        Client client = new Client("Петька", "123-GH");
-        client.takeBook(librarian.giveBook(library, "художественный", "Пушкин А.С.", "Книга-1"));
+        library.attachObserver(observer1);
+        library.attachObserver(observer2);
 
-        System.out.println(client);
+        BookInsert insert = new BookInsert.BookInsertBuilder()
+                .setDate("12/06/2023")
+                .setDeadline("15/06/2023")
+                .setTicketNumber("123-GH")
+                .build();
 
-        // Proxy - для прямого доступа к книгам
-        // Builder - для создания отдела
-        // Observer - для отслеживания книг
+        BookCard card = new BookCard.BookCardBuilder()
+                .setData("Data")
+                .setBookShelf("3F")
+                .setCount(234)
+                .setLibraryDepartment("Художественный")
+                .build();
+
+        Book book = new Book(insert, card);
+
+        library.addBook(book);
+        System.out.println("\n=================================\n");
+        library.addBook(book);
+        library.addBook(book);
+
+        System.out.println("\n=================================\n");
+        library.removeBook(book);
     }
 }

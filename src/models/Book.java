@@ -1,4 +1,4 @@
-package model;
+package models;
 
 public class Book {
     private BookInsert bookInsert;
@@ -7,6 +7,7 @@ public class Book {
     public Book(BookInsert bookInsert, BookCard bookCard) {
         this.bookInsert = bookInsert;
         this.bookCard = bookCard;
+
     }
 
     public BookInsert getBookInsert() {
@@ -17,19 +18,8 @@ public class Book {
         return bookCard;
     }
 
-    public void setBookInsert(BookInsert bookInsert) {
-        this.bookInsert = bookInsert;
-    }
-
-    public void setBookCard(BookCard bookCard) {
-        this.bookCard = bookCard;
-    }
-
     @Override
     public String toString() {
-        return "Book{" +
-                "bookInsert=" + bookInsert +
-                ", bookCard=" + bookCard +
-                '}';
+        return "[" + bookInsert + " " + bookCard + ']';
     }
 }
