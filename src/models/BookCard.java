@@ -6,31 +6,47 @@ package models;
  * Реализует гетеры полей класса
  */
 public class BookCard {
-    private String data; // Выходные данные
+    private String name; // Выходные данные
     private String libraryDepartment; // Отдел библиотеки
     private String bookShelf; // Полка на которой находится книга
     private int count;  // Количество экземпляров книги
 
     public BookCard(BookCardBuilder builder) {
-        data = builder.data;
+        name = builder.name;
         libraryDepartment = builder.libraryDepartment;
         bookShelf = builder.bookShelf;
         count = builder.count;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getLibraryDepartment() {
+        return libraryDepartment;
+    }
+
+    public String getBookShelf() {
+        return bookShelf;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
     @Override
     public String toString() {
-        return "{" + data + " " + libraryDepartment + " " + bookShelf + "}";
+        return "{" + name + " " + libraryDepartment + " " + bookShelf + "}";
     }
 
     public static class BookCardBuilder {
-        private String data; // Выходные данные
+        private String name; // Выходные данные
         private String libraryDepartment; // Отдел библиотеки
         private String bookShelf; // Полка на которой находится книга
         private int count;  // Количество экземпляров книги
 
-        public BookCardBuilder setData(String data) {
-            this.data = data;
+        public BookCardBuilder setName(String name) {
+            this.name = name;
             return this;
         }
 

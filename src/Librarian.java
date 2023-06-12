@@ -3,7 +3,7 @@ import models.Book;
 public interface Librarian {
     void viewBooks();
 
-    Book getCustomerBook();
+    Book getBookForCustomer(String author, String name);
 
     void writeInCard(Book book);
 

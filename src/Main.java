@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Library library = new Library();
 
-        ProxyPeople people = new ProxyPeople("Ivan", "123-GH");
+        ProxyPeople people = new ProxyPeople("Ivan", "123-GH", library);
 
         library.attachObserver(people);
 
@@ -17,18 +17,20 @@ public class Main {
                 .build();
 
         BookCard card = new BookCard.BookCardBuilder()
-                .setData("Data")
-                .setBookShelf("3F")
+                .setName("Золотая рыбка")
+                .setBookShelf("Пушкин А.С.")
                 .setCount(234)
                 .setLibraryDepartment("Художественный")
                 .build();
 
         Book book = new Book(insert, card);
 
-        people.authorizeLibrarian();
+        library.addBook(book);
 
-        people.getCustomerBook();
-        people.getLibraryBook(book);
+        people.authorizeCustomer();
+
+        System.out.println(people.getBookForCustomer("Пушкин А.С.", "Золотая рыбка"));
+        people.getBookFromLibrary("Пушкин А.С.", "Золотая рыбка");
         people.returnBook();
         people.returnBook(book);
         people.issueFine();
@@ -36,10 +38,5 @@ public class Main {
         people.writeInCard(book);
         people.writeOff(book);
         people.viewBooks();
-
-
-        library.addBook(book);
-        System.out.println("\n=================================\n");
-        library.removeBook(book);
     }
 }

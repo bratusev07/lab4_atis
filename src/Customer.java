@@ -1,9 +1,11 @@
 import models.Book;
 
-public interface Customer{
+public interface Customer {
     void viewBooks();
 
-    void getLibraryBook(Book book);
+    void getBookFromLibrary(String author, String name);
+
+    void getBookFromLibrary(Book book);
 
     Book returnBook();
 

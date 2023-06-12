@@ -8,18 +8,11 @@ public class RealCustomer implements Customer{
     public RealCustomer(String name, String ticketNumber) {
         this.name = name;
         this.ticketNumber = ticketNumber;
+        book = null;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getTicketNumber() {
-        return ticketNumber;
-    }
-
-    public Book getBook() {
-        return book;
     }
 
     @Override
@@ -28,7 +21,10 @@ public class RealCustomer implements Customer{
     }
 
     @Override
-    public void getLibraryBook(Book book) {
+    public void getBookFromLibrary(String author, String name) {}
+
+    @Override
+    public void getBookFromLibrary(Book book) {
         if (this.book == null) this.book = book;
     }
 

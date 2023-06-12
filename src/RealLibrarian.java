@@ -1,42 +1,41 @@
 import models.Book;
+import models.BookInsert;
 
-public class RealLibrarian implements Librarian{
+public class RealLibrarian implements Librarian {
     private String name;
-    private String ticketNumber;
-    private Book book;
+    private Library library;
 
-    public RealLibrarian(String name, String ticketNumber) {
+    public RealLibrarian(String name, Library library) {
         this.name = name;
-        this.ticketNumber = ticketNumber;
-        this.book = null;
+        this.library = library;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getTicketNumber() {
-        return ticketNumber;
-    }
-
     @Override
     public void viewBooks() {
-        System.out.println("Библиотекарь смотрите книги");
+        System.out.println(library.getBooks());
     }
 
     @Override
-    public Book getCustomerBook() {
-        return null;
+    public Book getBookForCustomer(String author, String name) {
+        return library.findBook(author, name);
     }
 
     @Override
     public void writeInCard(Book book) {
-
+        book.setBookInsert(new BookInsert.BookInsertBuilder()
+                .setDate("01/01/2023")
+                .setDeadline("01/02/2023")
+                .setTicketNumber("123-GH")
+                .build());
     }
 
     @Override
     public void returnBook(Book book) {
-
+        library.addBook(book);
     }
 
     @Override
