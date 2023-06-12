@@ -18,6 +18,14 @@ public class Book {
         return bookCard;
     }
 
+    public void setBookInsert(BookInsert bookInsert) {
+        this.bookInsert = bookInsert;
+    }
+
+    public void setBookCard(BookCard bookCard) {
+        this.bookCard = bookCard;
+    }
+
     @Override
     public String toString() {
         return "[" + bookInsert + " " + bookCard + ']';

@@ -6,11 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Library library = new Library();
 
-        Observer observer1 = new People("Ivan", null, "123-GH");
-        Observer observer2 = new People("Nikolay", null, "124-GH");
+        ProxyPeople people = new ProxyPeople("Ivan", "123-GH");
 
-        library.attachObserver(observer1);
-        library.attachObserver(observer2);
+        library.attachObserver(people);
 
         BookInsert insert = new BookInsert.BookInsertBuilder()
                 .setDate("12/06/2023")
@@ -27,11 +25,20 @@ public class Main {
 
         Book book = new Book(insert, card);
 
-        library.addBook(book);
-        System.out.println("\n=================================\n");
-        library.addBook(book);
-        library.addBook(book);
+        people.authorizeLibrarian();
 
+        people.getCustomerBook();
+        people.getLibraryBook(book);
+        people.returnBook();
+        people.returnBook(book);
+        people.issueFine();
+        people.payFine();
+        people.writeInCard(book);
+        people.writeOff(book);
+        people.viewBooks();
+
+
+        library.addBook(book);
         System.out.println("\n=================================\n");
         library.removeBook(book);
     }
